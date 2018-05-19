@@ -1,10 +1,21 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 
-setInterval(function(){
+function Cartoon(props){
+   return<h1>hello, {props.name} on {props.show}</h1>
+}
+
+function Show(){
+	return <div>
+	<Cartoon name='Ajeey' show='pokemon' />
+	<Cartoon name='Awrwerw' show='porwrwon' />
+	</div>
+}
+
+
 ReactDom.render(
-<h2>Time now:- {new Date().toLocaleTimeString()}</h2>,
+<Show/>,
 document.getElementById('root')
 );
-}, 1000);
+
 
