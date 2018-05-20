@@ -1,54 +1,38 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 
+function Message(props){
+	if(props.value){
+      return <h1>This is first  Message</h1>
+	}
 
-// class Clock extends React.Component{
-// 	constructor(props){
-// 		super(props)
-// 		this.state = { 
-//           date : new Date()
-// 		}
-// 	}
+	return <h1>I am from the second  Message</h1>
+}
 
-// 	componentDidMount(){
-//         setInterval( ()=> this.start(), 1000);
-// 	}
-// 	componentWillUnmount(){
-
-// 	}
-// 	start(){
-// 		this.setState({
-// 			date: new Date()
-// 		});
-// 	}
-//    render(){
-//    	return <h1>Time is : {this.state.date.toLocaleTimeString()}</h1>
-//    }
-// }
-
-
-class Inc extends React.Component{
+class Btn extends React.Component{
 	constructor(props){
 		super(props);
-		this.state = { counter : 0}
-		this.increment = this.increment.bind(this);
+		this.state = {value: true}
+	}
+
+	handleClick = () =>{
+		this.setState({
+			value : !this.state.value
+		});
 	}
 
 	render(){
-		return <button onClick= {this.increment}>Value is {this.state.counter}</button>
+		return(
+			<div>
+			<button onClick={this.handleClick}>Change this Message</button>
+		    <Message value = {this.state.value} />
+			</div>
+			) 
 	}
-
-	increment = (e) => {
-		e.preventDefault();
-		this.setState({
-           counter : this.state.counter + 1
-		});
-	}
-} 
-
+}
 
 ReactDom.render(
-<Inc/>,
+<Btn/>,
 document.getElementById('root')
 );
 
